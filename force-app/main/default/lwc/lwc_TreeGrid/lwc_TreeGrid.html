@@ -1,0 +1,65 @@
+<template>
+    <div style="overflow-x:auto;" class="slds-p-bottom_medium">
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered" role="grid">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <template if:true={parentHeader} for:each={parentHeader} for:item="header" for:index="index">
+                        <th key={header.index} aria-label={header} aria-sort="none" class="slds-is-resizable slds-is-sortable" style="background-color: #00A1E0; color:white;" scope="col">
+                            <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                <span class="slds-truncate" title={header}>{header}</span>
+                            </div>
+                        </th>
+                    </template>
+                </tr>
+            </thead>
+            <tbody>
+                <template if:true={parentmapdata} for:each={parentmapdata} for:item="parent" for:index="index">
+                    <tr class="slds-hint-parent" key={parent.key}>
+                        <template iterator:it={parent.value.dataValues}>
+                            <td data-label="" scope="row" key={it.value.valor}>
+                                <div class="slds-truncate" title={it.value.valor}>
+                                    <template if:true={it.first}>
+                                        <lightning-button-icon name={index} class="slds-m-right_x-small" variant="bare" size="small" icon-name="utility:chevronright" alternative-text="detail" onclick={handleIconClick}></lightning-button-icon>
+                                    </template>
+                                    <c-lwc_-Grid-Fields item-value={it.value}></c-lwc_-Grid-Fields>
+                                </div>
+                            </td>
+                        </template>
+                    </tr>
+                    <template if:true={parent.value.showDetail}>
+                        <tr key={parent.key}>
+                            <td colspan={headersSize}>
+                                <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered" role="treegrid">
+                                    <thead>
+                                        <tr class="slds-line-height_reset">
+                                            <template if:true={childrenHeader} for:each={childrenHeader} for:item="header" for:index="index">
+                                                <th key={header.index} aria-label={header} aria-sort="none" class="slds-has-button-menu slds-is-resizable slds-is-sortable" scope="col">
+                                                    <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                                        <span class="slds-truncate" title={header}>{header}</span>
+                                                    </div>
+                                                </th>
+                                            </template>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <template if:true={parent.value.childrenMap} for:each={parent.value.childrenMap} for:item="children" for:index="index">
+                                            <tr class="slds-hint-parent" key={children.key}>
+                                                <template if:true={children.value} for:each={children.value} for:item="child" for:index="index">
+                                                    <td data-label="" scope="row" key={child.valor}>
+                                                        <div class="slds-truncate" title={child.valor}>
+                                                            <c-lwc_-Grid-Fields item-value={child}></c-lwc_-Grid-Fields>
+                                                        </div>
+                                                    </td>
+                                                </template>
+                                            </tr>
+                                        </template>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </template>
+                </template>
+            </tbody>
+        </table>
+    </div>
+</template>

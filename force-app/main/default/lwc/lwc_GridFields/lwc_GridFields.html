@@ -1,0 +1,33 @@
+<template>
+    <template if:true={itemValue.isCurrency}>
+        <lightning-formatted-number value={itemValue.valor} format-style="currency" currency-code="EUR" maximum-fraction-digits={itemValue.atributos.FractionDigits} minimum-fraction-digits={itemValue.atributos.FractionDigits}></lightning-formatted-number>
+    </template>
+    <template if:true={itemValue.isNumber}>
+        <lightning-formatted-number value={itemValue.valor} format-style="decimal" maximum-fraction-digits={itemValue.atributos.FractionDigits} minimum-fraction-digits={itemValue.atributos.FractionDigits}></lightning-formatted-number>
+    </template>
+    <template if:true={itemValue.isText}>
+        <template if:true={itemValue.linkfy}>
+            <lightning-formatted-text value={itemValue.valor} linkify></lightning-formatted-text>
+        </template>
+        <template if:false={itemValue.linkfy}>
+            <lightning-formatted-text value={itemValue.valor}></lightning-formatted-text>
+        </template>
+    </template>
+    <template if:true={itemValue.isDate}>
+        <lightning-formatted-date-time value={itemValue.valor} day="2-digit" month="2-digit" year="numeric"></lightning-formatted-date-time>
+    </template>
+    <template if:true={itemValue.isDateTime}>
+        <lightning-formatted-date-time value={itemValue.valor} day="2-digit" month="2-digit" year="numeric" hour="2-digit" minute="2-digit"></lightning-formatted-date-time>
+    </template>
+    <template if:true={itemValue.isBoolean}>
+        <template if:true={itemValue.valor}>
+            <lightning-icon icon-name="utility:check" alternative-text="" title="" size="x-small"></lightning-icon>
+        </template>
+    </template>
+    <template if:true={itemValue.isNavigate}>
+        <lightning-formatted-url onmouseover={show} onmouseout={hide} value={itemValue.valor} label={itemValue.label} tooltip={itemValue.label} target={itemValue.atributos.target}></lightning-formatted-url>
+    </template>
+    <template if:true={itemValue.isPhone}>
+        <lightning-formatted-phone value={itemValue.valor} ></lightning-formatted-phone>
+    </template>
+</template>
