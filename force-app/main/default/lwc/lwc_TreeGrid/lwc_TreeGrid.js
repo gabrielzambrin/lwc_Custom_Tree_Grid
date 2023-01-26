@@ -57,7 +57,6 @@ export default class Lwc_TreeGrid extends LightningElement {
             mapDataValues.showDetail = false;
             this.parentmapdata.push({value:mapDataValues, key:this.alldata[key].parent.Id});
         }
-        console.log(this.parentmapdata);
     }
     
     handleIconClick(event){
@@ -114,7 +113,6 @@ export default class Lwc_TreeGrid extends LightningElement {
             default:
                 break;
         }
-        // console.log(data);
         return data;
     }
 }
