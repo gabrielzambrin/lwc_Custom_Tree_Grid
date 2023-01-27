@@ -4,7 +4,7 @@
             <thead>
                 <tr class="slds-line-height_reset">
                     <template if:true={parentHeader} for:each={parentHeader} for:item="header" for:index="index">
-                        <th key={header.index} aria-label={header} aria-sort="none" class="slds-is-resizable slds-is-sortable" style="background-color: #00A1E0; color:white;" scope="col">
+                        <th key={header.index} aria-label={header} aria-sort="none" class="slds-is-resizable slds-is-sortable" style="height: 2rem;background-color: #00A1E0; color:white;" scope="col">
                             <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
                                 <span class="slds-truncate" title={header}>{header}</span>
                             </div>
@@ -14,7 +14,7 @@
             </thead>
             <tbody>
                 <template if:true={parentmapdata} for:each={parentmapdata} for:item="parent" for:index="index">
-                    <tr class="slds-hint-parent" key={parent.key}>
+                    <tr class="slds-hint-parent" key={parent.key} style="height: 2rem;">
                         <template iterator:it={parent.value.dataValues}>
                             <td data-label="" scope="row" key={it.value.valor}>
                                 <div class="slds-truncate" title={it.value.valor}>
@@ -33,7 +33,7 @@
                                     <thead>
                                         <tr class="slds-line-height_reset">
                                             <template if:true={childrenHeader} for:each={childrenHeader} for:item="header" for:index="index">
-                                                <th key={header.index} aria-label={header} aria-sort="none" class="slds-has-button-menu slds-is-resizable slds-is-sortable" scope="col">
+                                                <th key={header.index} aria-label={header} aria-sort="none" class="slds-has-button-menu slds-is-resizable slds-is-sortable" scope="col" style="height: 2rem;">
                                                     <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
                                                         <span class="slds-truncate" title={header}>{header}</span>
                                                     </div>
@@ -43,7 +43,7 @@
                                     </thead>
                                     <tbody>
                                         <template if:true={parent.value.childrenMap} for:each={parent.value.childrenMap} for:item="children" for:index="index">
-                                            <tr class="slds-hint-parent" key={children.key}>
+                                            <tr class="slds-hint-parent" key={children.key} style="height: 2rem;">
                                                 <template if:true={children.value} for:each={children.value} for:item="child" for:index="index">
                                                     <td data-label="" scope="row" key={child.valor}>
                                                         <div class="slds-truncate" title={child.valor}>
