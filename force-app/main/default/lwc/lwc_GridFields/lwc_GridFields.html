@@ -25,7 +25,7 @@
         </template>
     </template>
     <template if:true={itemValue.isNavigate}>
-        <lightning-formatted-url onmouseover={show} onmouseout={hide} value={itemValue.valor} label={itemValue.label} tooltip={itemValue.label} target={itemValue.atributos.target}></lightning-formatted-url>
+        <lightning-formatted-url value={itemValue.valor} label={itemValue.label} tooltip={itemValue.label} target={itemValue.atributos.target}></lightning-formatted-url>
     </template>
     <template if:true={itemValue.isPhone}>
         <lightning-formatted-phone value={itemValue.valor} ></lightning-formatted-phone>
