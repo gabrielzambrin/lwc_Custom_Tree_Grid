@@ -12,6 +12,7 @@ export default class Lwc_TreeGrid extends LightningElement {
         this.parentHeader = object.parentFields.map(({label}) => label);
         this.childrenHeader = object.childrenFields.map(({label}) => label);
         this.headersSize = this.parentHeader.length;
+        this.parentmapdata = [];
         this.alldata = object.data;
         for (let key in this.alldata) {
             var mapDataValues = new Object();
